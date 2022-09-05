@@ -1,0 +1,11 @@
+
+body.dark-theme {
+    --body-color: #333;
+    --text-color: #f4f4f4;
+}
+
+.change-theme {
+    color: var(--title-color);
+    font-size: 1.15rem;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+{
+    "language": "en",
+    "main-title":"FIMPLE REACT PRACTICUM CREDIT CALCULATOR",
+    "form-title":"Credit Form",
+    "form-amount" : "Credit Amount",    
+    "form-installment":"Installment",
+    "form-interest" : "Interest",
+    "form-tax" : "Tax",
+    "form-button" : "Calculate",
+    "form-span" : "$",
+    "select-year":"Annually",
+    "select-month":"Monthly",
+    "select-week":"Weekly"
+}

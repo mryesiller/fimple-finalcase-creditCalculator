@@ -1,0 +1,32 @@
+
+.nav {
+    height:var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 0;
+    
+
+    &__logo img{
+        height: 3.75rem;
+
+        &:hover {
+            transform: scale(0.98);
+        }
+    }
+
+    &__title {
+        letter-spacing: 0.1rem;
+
+    }
+
+    &__button i{
+        font-size: 1.25rem;
+    }
+
+    &__language {
+        margin-left: 1rem;
+        outline: none;
+        cursor: pointer;
+    }
+}    

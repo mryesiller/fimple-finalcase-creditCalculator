@@ -1,0 +1,7 @@
+
+.table {
+    width: 100%;
+    @include border;
+    margin-top: 2rem;
+    min-height:50vh;
+}

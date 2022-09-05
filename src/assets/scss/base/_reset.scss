@@ -1,0 +1,46 @@
+@import '../config/_variables';
+
+*,
+*::before,
+*::after {
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--font-family);
+    font-size: var(--normal-font-size);   
+        
+}
+
+body {
+    margin:var(--header-height) 0 0 0;
+    background-color: var(--body-color);
+    color: var(--text-color);    
+}
+
+button {
+    cursor: pointer;
+    border:none;
+    outline:none;
+}
+
+h1,
+h2,
+h3 {
+    color:var(--text-color);
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}

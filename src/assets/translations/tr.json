@@ -1,0 +1,14 @@
+{
+    "language": "tr",
+    "main-title":"FIMPLE REACT PRACTICUM KREDI HESAPLAMA",
+    "form-title":"Kredi Formu",
+    "form-amount" : "Kredi Miktarı",    
+    "form-installment":"Taksit",
+    "form-interest" : "Faiz Oranı",
+    "form-tax" : "Vergi",
+    "form-button" : "Hesapla",
+    "form-span" : "TL",
+    "select-year":"Yıllık",
+    "select-month":"Aylık",
+    "select-week":"Haftalık"
+}

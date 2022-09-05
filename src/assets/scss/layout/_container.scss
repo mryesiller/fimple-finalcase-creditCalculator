@@ -1,0 +1,21 @@
+
+.container {
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+}
+
+main {
+    
+    margin-top: calc(var(--header-height) + 5.5rem);
+}
+
