@@ -1,15 +1,15 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import CanvasJSReact from "../../../../assets/scss/vendor/canvasjs.react"
-import { eventStore } from "../../../../context/eventContext"
-import { dataStore } from "../../../../context/dataContext"
+import CanvasJSReact from "../../../assets/scss/vendor/canvasjs.react"
+import { eventStore } from "../../../context/eventContext"
+import { dataStore } from "../../../context/dataContext"
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 const Graphic = () => {
   const { t } = useTranslation()
   const { darkMode } = eventStore()
-  const { amountValue, rateValue, taxValue } = dataStore()
+  const { creditAmount, creditRateAmount, creditTaxAmount } = dataStore()
 
   const options = {
     animationEnabled: true,
@@ -27,9 +27,9 @@ const Graphic = () => {
         startAngle: -90,
         indexLabelFontColor: `${darkMode ? "#fff" : "#333"}`,
         dataPoints: [
-          { y: amountValue, label: t("graphic-amount") },
-          { y: rateValue, label: t("graphic-interest") },
-          { y: taxValue, label: t("graphic-tax") },
+          { y: creditAmount, label: t("graphic-amount") },
+          { y: creditRateAmount, label: t("graphic-interest") },
+          { y: creditTaxAmount, label: t("graphic-tax") },
         ],
       },
     ],

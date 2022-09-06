@@ -36,7 +36,7 @@ const Navbar = () => {
           onChange={handleChangeLanguage}
           defaultValue={language}
         >
-          {["en", "tr"].map((lang) => (
+          {["tr", "en"].map((lang) => (
             <option key={lang} value={lang}>
               {lang.toUpperCase()}
             </option>

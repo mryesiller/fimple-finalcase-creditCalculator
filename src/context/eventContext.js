@@ -3,7 +3,7 @@ import create from "zustand"
 const initialState = {
   darkMode: false,
   isLoading: false,
-  error: null,
+  errors: null,
 }
 
 const eventMethods = (set, get) => ({
@@ -13,6 +13,9 @@ const eventMethods = (set, get) => ({
     document.body.classList[darkMode ? "remove" : "add"]("dark-theme")
 
     set({ darkMode: !darkMode })
+  },
+  setErrors: (error) => {
+    set({ errors: error })
   },
 })
 

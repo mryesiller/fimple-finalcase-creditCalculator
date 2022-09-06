@@ -9,7 +9,8 @@
     "form-kkdf" : "KKDF",
     "form-tax" : "Tax",
     "form-button" : "Calculate",
-    "form-span" : "$",
+    "form-span-currency" : "$",
+    "form-span-percent" : "%",
     "select-year":"Annually",
     "select-month":"Monthly",
     "select-week":"Weekly",
@@ -22,7 +23,13 @@
     "week":"week",
     "month":"month",
     "year":"year",
+    "min-amount-error":"Credit amount cannot be under 500$",
+    "max-amount-error":"Credit amount cannot be upper than 1.000.000$",
     "min-rate-error":"Rate cannot be under 0.01%",
-    "max-rate-error":"Rate cannot be upper than 10%"   
+    "max-rate-error":"Rate cannot be upper than 10%",
+    "min-bsmv-error":"Bsmv cannot be under 0.01%",
+    "max-bsmv-error":"Bsmv cannot be upper than 20%",
+    "min-kkdf-error":"Kkdf cannot be under 0.01%",
+    "max-kkdf-error":"Kkdf cannot be upper than 20%"       
     
 }

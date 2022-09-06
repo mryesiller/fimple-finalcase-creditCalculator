@@ -13,14 +13,13 @@
 @import '../../components/layout/header/_navbar';
 @import '../../components/layout/header/_header';
 @import '../../components/layout/footer/_footer';
-@import '../../components/layout/info_section/_info';
-@import '../../components/layout/table/_table';
 @import '../../components/reuseable/loading/_loading';
 @import '../../components/reuseable/error/_error';
-@import '../../components/forms/creditForm/_form';
+
 @import 'components/_buttons';
 
 /* pages */
 @import '../../pages/home/_home';
+@import '../../pages/home/sections/_section';
 @import '../../pages/error/_errorPage';
 @import '../../pages/shared/_shared';

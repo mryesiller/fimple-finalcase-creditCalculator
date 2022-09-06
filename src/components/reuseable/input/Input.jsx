@@ -5,17 +5,18 @@ const Input = (
     classname,
     name,
     span_value,
-    input_value,
     type,
     label_text,
     onChange,
     error,
     step,
+    containerID,
+    defaultValue,
   },
   ref
 ) => {
   return (
-    <div className={`${classname}__group`}>
+    <div className={`${classname}__group`} id={containerID}>
       <input
         ref={ref}
         className={`${classname}__input`}
@@ -23,13 +24,13 @@ const Input = (
         name={name}
         type={type}
         step={step}
-        defaultValue={input_value}
+        defaultValue={defaultValue}
         onChange={onChange}
       ></input>
-      <label className={`${classname}__label`} htmlFor={name}>
+      <label className={`${classname}__label ${name}`} htmlFor={name}>
         {label_text}
       </label>
-      <span className={`${classname}__span`}>{span_value}</span>
+      <span className={`${classname}__span ${name}`}>{span_value}</span>
       {error && <p className={`${classname}__error`}>{error}</p>}
     </div>
   )

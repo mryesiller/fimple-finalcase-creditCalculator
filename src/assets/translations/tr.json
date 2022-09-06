@@ -9,7 +9,8 @@
     "form-kkdf" : "KKDF",
     "form-tax" : "Vergi",
     "form-button" : "Hesapla",
-    "form-span" : "TL",
+    "form-span-currency" : "TL",
+    "form-span-percent" : "%",
     "select-year":"Yıllık",
     "select-month":"Aylık",
     "select-week":"Haftalık",
@@ -22,6 +23,12 @@
     "week":"hafta",
     "month":"ay",
     "year":"yıl",
-    "min-rate-error":"Faiz oranı 0.01% altında olamaz.",
-    "max-rate-error":"Faiz oranı 10% dan fazla olamaz" 
+    "min-amount-error":"Kredi miktarı 500TL altnda olamaz..",
+    "max-amount-error":"Kredi miktarı 1.000.000TL üzerinde olamaz..",
+    "min-rate-error":"Faiz oranı 0.01% altında olamaz..",
+    "max-rate-error":"Faiz oranı 10% dan fazla olamaz..",
+    "min-bsmv-error":"Bsmv oranı 0.01% altında olamaz..",
+    "max-bsmv-error":"Bsmv oranı 20% üzerinde olamaz..",
+    "min-kkdf-error":"Kkdf oranı 0.01% altında olamaz..",
+    "max-kkdf-error":"Kkdf oranı 20% üzerinde olamaz.."    
 }

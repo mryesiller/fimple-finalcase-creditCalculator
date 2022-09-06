@@ -16,47 +16,57 @@ const initialState = {
   totalPayment: 12520,
 }
 
-const dataMethods = (set, get) => {
-  return {
-    setRateValue: (rate, amountValue, expiryValue) => {
-      const value = (rate * amountValue * expiryValue) / 100
-      set({ rateValue: value })
-      return value
-    },
-    setBsmvValue: (bsmv, rateValue) => {
-      const value = (bsmv * rateValue) / 100
-      set({ bsmvValue: value })
-      return value
-    },
-    setKkdfValue: (kkdf, rateValue) => {
-      const value = (kkdf * rateValue) / 100
-      set({ kkdfValue: value })
-      return value
-    },
-    setTaxValue: (bsmvValue, kkdfValue) => {
-      const value = bsmvValue + kkdfValue
-      set({ taxValue: value })
-      return value
-    },
-    setTotalTax: (taxValue, rateValue) => {
-      const value = taxValue + rateValue
-      set({ totalTax: value })
-      return value
-    },
-    setTotalPayment: (totalTax, amountValue) => {
-      const value = totalTax + amountValue
-      set({ totalPayment: value })
-      return value
-    },
-    setExpiryPayment: (amountValue, expiryValue) => {
-      const value = amountValue / expiryValue
-      set({ expiryPayment: value })
-      return value
-    },
-  }
+const initialBaseInputData = {
+  creditAmount: 10000,
+  creditPeriod: 12,
+  creditPeriodType: "ay",
+  creditRate: 1.68,
+  creditBsmv: 10,
+  creditKkdf: 15,
 }
+
+const calculatedData = {
+  creditRateAmount: 2016,
+  creditBsmvAmount: null,
+  creditKkdfAmount: null,
+  creditPeriodPayment: 1043.33,
+  creditTaxAmount: 504,
+  totalTaxAmount: 2520,
+  totalPaymentAmount: 12520,
+}
+
+const creditMethods = (set, get) => ({
+  setCalculatedData: (
+    creditAmount,
+    creditRate,
+    creditPeriod,
+    creditPeriodType,
+    creditBsmv,
+    creditKkdf
+  ) => {
+    set({
+      creditRateAmount: (creditRate * creditAmount * creditPeriod) / 100,
+    })
+    console.log(get().creditRateAmount)
+    set({ creditBsmvAmount: (creditBsmv * get().creditRateAmount) / 100 })
+    set({ creditKkdfAmount: (creditKkdf * get().creditRateAmount) / 100 })
+    set({
+      creditTaxAmount: get().creditBsmvAmount + get().creditKkdfAmount,
+    })
+    set({
+      totalTaxAmount: get().creditRateAmount + get().creditTaxAmount,
+    })
+    console.log(get().totalTaxAmount)
+    set({ totalPaymentAmount: get().totalTaxAmount + Number(creditAmount) })
+    console.log(get().totalPaymentAmount)
+    set({ creditPeriodPayment: get().totalPaymentAmount / creditPeriod })
+  },
+  calculteCompoundInterest: () => {},
+})
 
 export const dataStore = create((set, get) => ({
   ...initialState,
-  ...dataMethods(set, get),
+  ...initialBaseInputData,
+  ...calculatedData,
+  ...creditMethods(set, get),
 }))
