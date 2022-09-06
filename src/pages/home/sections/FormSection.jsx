@@ -21,6 +21,7 @@ const FormSection = () => {
     creditBsmv,
     creditKkdf,
     setCalculatedData,
+    calculteCompoundInterest,
   } = dataStore()
 
   const initialErrorState = {
@@ -98,7 +99,7 @@ const FormSection = () => {
           creditBsmv: values.creditBsmv,
           creditKkdf: values.creditKkdf,
         })
-        setCalculatedData(
+        calculteCompoundInterest(
           values.creditAmount,
           values.creditRate,
           values.creditPeriod,

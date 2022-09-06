@@ -1,21 +1,5 @@
 import create from "zustand"
 
-const initialState = {
-  amountValue: 10000,
-  expiryType: "ay",
-  expiryValue: 12,
-  expiryPayment: 1043.33,
-  rate: 1.68,
-  rateValue: 2016,
-  bsmv: 10,
-  bsmvValue: null,
-  kkdfValue: null,
-  kkdf: 15,
-  taxValue: 504,
-  totalTax: 2520,
-  totalPayment: 12520,
-}
-
 const initialBaseInputData = {
   creditAmount: 10000,
   creditPeriod: 12,
@@ -61,11 +45,28 @@ const creditMethods = (set, get) => ({
     console.log(get().totalPaymentAmount)
     set({ creditPeriodPayment: get().totalPaymentAmount / creditPeriod })
   },
-  calculteCompoundInterest: () => {},
+  calculteCompoundInterest: (
+    creditAmount,
+    creditRate,
+    creditPeriod,
+    creditPeriodType,
+    creditBsmv,
+    creditKkdf
+  ) => {
+    const totalTaxRate =
+      (creditRate / 100) * (1 + (creditBsmv / 100 + creditKkdf / 100))
+    const creditPayment =
+      creditAmount *
+      ((totalTaxRate * (1 + totalTaxRate) ** creditPeriod) /
+        ((1 + totalTaxRate) ** creditPeriod - 1))
+
+    set({ creditPeriodPayment: creditPayment })
+    set({ totalPaymentAmount: creditPayment * creditPeriod })
+    set({ totalTaxAmount: get().totalPaymentAmount - creditAmount })
+  },
 })
 
 export const dataStore = create((set, get) => ({
-  ...initialState,
   ...initialBaseInputData,
   ...calculatedData,
   ...creditMethods(set, get),
