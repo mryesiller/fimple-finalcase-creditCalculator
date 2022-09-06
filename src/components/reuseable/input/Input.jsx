@@ -1,31 +1,38 @@
 import React from "react"
 
-const Input = ({
-  classname,
-  name,
-  span_value,
-  maxlength,
-  input_value,
-  type,
-  placeholder,
-  label_text,
-}) => {
+const Input = (
+  {
+    classname,
+    name,
+    span_value,
+    input_value,
+    type,
+    label_text,
+    onChange,
+    error,
+    step,
+  },
+  ref
+) => {
   return (
     <div className={`${classname}__group`}>
       <input
+        ref={ref}
         className={`${classname}__input`}
         id={name}
-        placeholder={placeholder}
-        value={input_value}
+        name={name}
         type={type}
-        maxlength={maxlength}
+        step={step}
+        defaultValue={input_value}
+        onChange={onChange}
       ></input>
       <label className={`${classname}__label`} htmlFor={name}>
         {label_text}
       </label>
       <span className={`${classname}__span`}>{span_value}</span>
+      {error && <p className={`${classname}__error`}>{error}</p>}
     </div>
   )
 }
 
-export default Input
+export default React.forwardRef(Input)

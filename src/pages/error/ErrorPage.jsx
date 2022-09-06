@@ -4,4 +4,4 @@ const ErrorPage = () => {
   return <div className="error_container">ErrorPage</div>
 }
 
-export default ErrorPage
+export default React.memo(ErrorPage)

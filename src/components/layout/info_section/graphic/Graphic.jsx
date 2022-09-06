@@ -1,11 +1,15 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import CanvasJSReact from "../../../../assets/scss/vendor/canvasjs.react"
 import { eventStore } from "../../../../context/eventContext"
+import { dataStore } from "../../../../context/dataContext"
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 const Graphic = () => {
+  const { t } = useTranslation()
   const { darkMode } = eventStore()
+  const { amountValue, rateValue, taxValue } = dataStore()
 
   const options = {
     animationEnabled: true,
@@ -19,13 +23,13 @@ const Graphic = () => {
     data: [
       {
         type: "pie",
-        indexLabel: "{label}: {y}%",
+        indexLabel: "{label}: {y}",
         startAngle: -90,
         indexLabelFontColor: `${darkMode ? "#fff" : "#333"}`,
         dataPoints: [
-          { y: 80, label: "Credit Amount" },
-          { y: 15, label: "Interest" },
-          { y: 5, label: "Tax" },
+          { y: amountValue, label: t("graphic-amount") },
+          { y: rateValue, label: t("graphic-interest") },
+          { y: taxValue, label: t("graphic-tax") },
         ],
       },
     ],

@@ -16,7 +16,15 @@
     }
 
     &__info {
-        padding: 1rem;
+        padding: 3.5rem 1.5rem;
+        line-height: 2.5rem;
         @include border;
+    }
+
+    &__text {
+        display: flex;
+        justify-content:space-between;
+        border-bottom: 1px solid var(--text-color);
+        
     }
 }

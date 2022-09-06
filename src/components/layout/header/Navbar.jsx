@@ -5,13 +5,16 @@ import lightLogo from "../../../assets/images/light-logo.png"
 import darkLogo from "../../../assets/images/dark-logo.png"
 
 const Navbar = () => {
-  const { t, i18n } = useTranslation()
+  const {
+    t,
+    i18n: { language, changeLanguage },
+  } = useTranslation()
 
-  const { darkMode } = eventStore()
+  const { darkMode, toggleTheme } = eventStore()
 
-  const handleLanguage = (e) => {
+  const handleChangeLanguage = (e) => {
     e.preventDefault()
-    i18n.changeLanguage(e.target.value)
+    changeLanguage(e.target.value)
   }
 
   return (
@@ -26,18 +29,18 @@ const Navbar = () => {
             darkMode ? "ri-sun-line change-theme" : "ri-moon-line change-theme"
           }
           id="theme-button"
-          onClick={() => {
-            eventStore.setState({ darkMode: !darkMode })
-            if (darkMode) {
-              document.body.classList.remove("dark-theme")
-            } else {
-              document.body.classList.add("dark-theme")
-            }
-          }}
+          onClick={toggleTheme}
         ></i>
-        <select className="nav__language" onChange={handleLanguage}>
-          <option value="en">EN</option>
-          <option value="tr">TR</option>
+        <select
+          className="nav__language"
+          onChange={handleChangeLanguage}
+          defaultValue={language}
+        >
+          {["en", "tr"].map((lang) => (
+            <option key={lang} value={lang}>
+              {lang.toUpperCase()}
+            </option>
+          ))}
         </select>
       </div>
     </nav>

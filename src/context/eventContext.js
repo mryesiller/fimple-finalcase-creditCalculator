@@ -6,6 +6,17 @@ const initialState = {
   error: null,
 }
 
-export const eventStore = create(() => ({
+const eventMethods = (set, get) => ({
+  toggleTheme: () => {
+    const { darkMode } = get()
+
+    document.body.classList[darkMode ? "remove" : "add"]("dark-theme")
+
+    set({ darkMode: !darkMode })
+  },
+})
+
+export const eventStore = create((set, get) => ({
   ...initialState,
+  ...eventMethods(set, get),
 }))

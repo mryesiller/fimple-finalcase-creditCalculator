@@ -3,3 +3,19 @@
     border: 1px solid var(--text-color);
     box-shadow: 2px 2px 8px 8px rgba(0,0,0,0.2);
 }
+
+@mixin label {
+    position: absolute;
+    padding:0 0.5rem;
+    font-size:var(--small-font-size);        
+    z-index: 9;
+    background-color: var(--body-color);
+}
+
+@mixin span {
+    position: absolute;
+    padding:0 0.5rem;
+    font-size:var(--normal-font-size);       
+    z-index: 9;
+    color: black; 
+}

@@ -5,10 +5,24 @@
     "form-amount" : "Credit Amount",    
     "form-installment":"Installment",
     "form-interest" : "Interest",
+    "form-bsmv" : "BSMV",
+    "form-kkdf" : "KKDF",
     "form-tax" : "Tax",
     "form-button" : "Calculate",
     "form-span" : "$",
     "select-year":"Annually",
     "select-month":"Monthly",
-    "select-week":"Weekly"
+    "select-week":"Weekly",
+    "graphic-amount" :"Credit Amount",
+    "graphic-interest":"Interest",
+    "graphic-tax":"Tax",
+    "total-payback" : "Total Payback",
+    "total-interest" : "Total Interest",
+    "installment-period" : "Installment Period",
+    "week":"week",
+    "month":"month",
+    "year":"year",
+    "min-rate-error":"Rate cannot be under 0.01%",
+    "max-rate-error":"Rate cannot be upper than 10%"   
+    
 }
