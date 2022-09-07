@@ -11,7 +11,7 @@ const Info = () => {
     creditRate,
     creditPeriod,
     creditPeriodType,
-    creditPeriodPayment,
+    creditPeriodPayment,    
     totalTaxAmount,
     totalPaymentAmount,
   } = dataStore()

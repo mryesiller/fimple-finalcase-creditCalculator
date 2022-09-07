@@ -17,6 +17,9 @@ const calculatedData = {
   creditTaxAmount: 504,
   totalTaxAmount: 2520,
   totalPaymentAmount: 12520,
+  remaningPrincipalAmount: 10000,
+  principalAmount: 10000,
+  tableData : []
 }
 
 const creditMethods = (set, get) => ({
@@ -64,6 +67,38 @@ const creditMethods = (set, get) => ({
     set({ totalPaymentAmount: creditPayment * creditPeriod })
     set({ totalTaxAmount: get().totalPaymentAmount - creditAmount })
   },
+  recursion: (creditAmount,creditRate,creditPeriod,creditBsmv,creditKkdf) => {
+
+  const totalTaxRate =
+    (creditRate / 100) * (1 + (creditBsmv / 100 + creditKkdf / 100))
+  const creditPayment =
+    creditAmount *
+    ((totalTaxRate * (1 + totalTaxRate) ** creditPeriod) /
+      ((1 + totalTaxRate) ** creditPeriod - 1))
+
+  set({ creditRateAmount : (creditRate/100) * creditAmount})
+  set({ creditBsmvAmount : (creditBsmv/100) * get().creditRateAmount})
+  set({ creditKkdfAmount : (creditKkdf/100) * get().creditRateAmount})
+  set({ principalAmount : creditAmount - (get().creditRateAmount+get().creditBsmvAmount+get().creditKkdfAmount)})   
+  set({ creditPeriodPayment: creditPayment })
+  set({ totalPaymentAmount: creditPayment * creditPeriod })
+  set({ totalTaxAmount: get().totalPaymentAmount - creditAmount })
+  set({ remaningPrincipalAmount : creditAmount - get().creditPeriodPayment}) 
+
+  const {creditPeriodPayment,remaningPrincipalAmount,creditRateAmount,creditBsmvAmount,creditKkdfAmount} = get()
+
+  set({creditAmount : remaningPrincipalAmount})
+  get().tableData.push({
+    creditPeriodPayment,remaningPrincipalAmount,creditRateAmount,creditBsmvAmount,creditKkdfAmount,creditAmount
+  })
+
+  if(remaningPrincipalAmount > 0){    
+    get().recursion(creditAmount,creditRate,creditPeriod,creditBsmv,creditKkdf)
+    console.log(get().tableData)
+  }
+  
+
+},
 })
 
 export const dataStore = create((set, get) => ({

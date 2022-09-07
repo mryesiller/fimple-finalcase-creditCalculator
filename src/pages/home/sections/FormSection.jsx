@@ -22,6 +22,7 @@ const FormSection = () => {
     creditKkdf,
     setCalculatedData,
     calculteCompoundInterest,
+    recursion,
   } = dataStore()
 
   const initialErrorState = {
@@ -51,17 +52,82 @@ const FormSection = () => {
   const [formErrors, setFormErrors] = useState(initialErrorState)
 
   const formSchema = yup.object().shape({
-    creditAmount: yup
-      .number()
-      .min(500, `${t("min-amount-error")}`)
-      .max(1000000, `${t("max-amount-error")}`)
-      .required(),
-    creditRate: yup
-      .number()
-      .min(0.1, `${t("min-rate-error")}`)
-      .max(10, `${t("max-rate-error")}`)
-      .required(),
-    creditPeriod: yup.number().required(),
+    creditPeriodType: yup.string().required(),
+    creditAmount: yup.number()
+    .when("creditPeriodType", {
+      is: "year",
+      then: yup
+        .number()
+        .required()
+        .min(10000, t("min-amount-error-year"))     // 10.000 TL min/year
+        .max(10000000, t("max-amount-error-year")), // 10.000.000TL max/year      
+    })
+    .when("creditPeriodType", {      
+      is: "month",
+      then:yup
+        .number()
+        .required()
+        .min(1000, t("min-amount-error-month"))      // 1.000 TL min/month
+        .max(1000000, t("max-amount-error-month")),  // 1.000.000 TL max/month      
+    })
+    .when("creditPeriodType", {     
+      is : "week",
+      then:yup
+        .number()
+        .required()
+        .min(500, t("min-amount-error-week"))       // 500 TL min/week
+        .max(100000, t("max-amount-error-week")),   // 100.000 TL max/week
+    }),           
+    creditRate: yup.number()
+    .when("creditPeriodType", {      
+      is : "week",
+      then:yup
+        .number()
+        .required()
+        .min(0.01, t("min-rate-error-week"))         // 0.01% min/week
+        .max(5, t("max-rate-error-week")),           // 5% max/week
+    })
+    .when("creditPeriodType", {
+      is: "year",
+      then: yup
+        .number()
+        .required()
+        .min(0.1, t("min-rate-error-year"))          // 0,1% min/year
+        .max(50, t("max-rate-error-year")),        // 50% max/year     
+    })
+    .when("creditPeriodType", {      
+      is: "month",
+      then:yup
+        .number()
+        .required()
+        .min(0.01, t("min-rate-error-month"))        // 0.01% min/month
+        .max(10, t("max-rate-error-month")),         // 10% max/month     
+    }),            
+    creditPeriod: yup.number()
+    .when("creditPeriodType", {            
+      is : "week",
+      then:yup
+        .number()
+        .required()
+        .min(4, t("min-period-error-week"))          // 4 week min
+        .max(52, t("max-period-error-week")),      // 52 week max      
+    })
+    .when("creditPeriodType", {
+      is: "year",
+      then: yup
+        .number()
+        .required()
+        .min(1, t("min-period-error-year"))          // 1 year min
+        .max(30, t("max-period-error-year")),        // 30 year max
+    })
+    .when("creditPeriodType", {
+      is: "month",
+      then:yup
+        .number()
+        .required()
+        .min(3, t("min-period-error-month"))          // 3 month min
+        .max(120, t("max-period-error-month")),       // 120 month max
+    }),
     creditBsmv: yup
       .number()
       .min(0.1, `${t("min-bsmv-error")}`)
@@ -72,7 +138,7 @@ const FormSection = () => {
       .min(0.1, `${t("min-kkdf-error")}`)
       .max(20, `${t("max-kkdf-error")}`)
       .required(),
-    creditPeriodType: yup.string().required(),
+    
   })
 
   const onInputChange = useCallback(
@@ -99,11 +165,10 @@ const FormSection = () => {
           creditBsmv: values.creditBsmv,
           creditKkdf: values.creditKkdf,
         })
-        calculteCompoundInterest(
+        recursion(
           values.creditAmount,
           values.creditRate,
-          values.creditPeriod,
-          values.creditPeriodType,
+          values.creditPeriod,          
           values.creditBsmv,
           values.creditKkdf
         )
