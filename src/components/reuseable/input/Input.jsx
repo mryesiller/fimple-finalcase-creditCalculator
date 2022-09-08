@@ -1,41 +1,27 @@
-import React from "react"
+import React from "react";
 
 const Input = (
-  {
-    classname,
-    name,
-    span_value,
-    type,
-    label_text,
-    onChange,
-    error,
-    step,
-    containerID,
-    defaultValue,
-  },
+  { name, info, type, label, onChange, error, step, defaultValue },
   ref
 ) => {
-
- 
   return (
-    <div className={`${classname}__group`} id={containerID}>
+    <div className={`input__container`}>
       <input
         ref={ref}
-        className={`${classname}__input`}
-        id={name}
+        id={name}                                                                                             
         name={name}
         type={type}
         step={step}
         defaultValue={defaultValue}
         onChange={onChange}
-      ></input>
-      <label className={`${classname}__label ${name}`} htmlFor={name}>
-        {label_text}
+      />
+      <label className={`input__label`} htmlFor={name}>
+        {label}
       </label>
-      <span className={`${classname}__span ${name}`}>{span_value}</span>
-      {error && <p className={`${classname}__error`}>{error}</p>}
+      <span className={`input__info`}>{info}</span>
+      {error && <p className={`input__error`}>{error}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default React.forwardRef(Input)
+export default React.forwardRef(Input);

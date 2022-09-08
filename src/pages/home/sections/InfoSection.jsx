@@ -18,38 +18,33 @@ const Info = () => {
 
   return (
     <article className="info__info">
-      <InfoText
-        className={"info"}
+      <InfoText        
         title={t("form-amount")}
         text={creditAmount}
         span={t("form-span-currency")}
       />
-      <InfoText
-        className={"info"}
+      <InfoText        
         title={t("form-interest")}
         text={creditRate}
         span={t("form-span-percent")}
       />
-      <InfoText
-        className={"info"}
+      <InfoText        
         title={t("installment-period")}
         text={creditPeriod}
         span={creditPeriodType}
       />
-      <InfoText
-        className={"info"}
+      <InfoText        
         title={t("total-interest")}
         text={totalTaxAmount.toFixed(2)}
         span={t("form-span-currency")}
       />
-      <InfoText
-        className={"info"}
+      <InfoText        
         title={t("form-installment")}
         text={creditPeriodPayment}
         span={t("form-span-currency")}
       />
-      <InfoText
-        className={"info"}
+      
+      <InfoText        
         title={t("total-payback")}
         text={totalPaymentAmount.toFixed(2)}
         span={t("form-span-currency")}

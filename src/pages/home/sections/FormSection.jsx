@@ -1,62 +1,63 @@
 import React, { useRef} from "react"
 import { useTranslation } from "react-i18next"
 
-import { dataStore } from "../../../context/dataContext"
+import { dataStore, initialCreditData } from "../../../context/dataContext"
 import { eventStore } from "../../../context/eventContext"
 import { formStore } from "../../../context/formContext"
 import { formSchema } from "../../../helpers/yupFormSchema"
-
-
 
 import dollar from "../../../assets/images/dollar.png"
 import { Input } from "../../../components"
 
 const FormSection = () => {
-  const { t } = useTranslation()  
 
+  const { t } = useTranslation()  
   const { handleFormSubmit } = formStore()
   const { errors} = eventStore()
-  const {
-    creditAmount,
-    creditRate,
-    creditPeriod,    
-    creditBsmv,
-    creditKkdf,    
-    getTogetherMethod,
-    
-  } = dataStore() 
+  const { calculateCreditPayback } = dataStore();
 
-  const creditAmountRef = useRef()
-  const creditRateRef = useRef()
-  const creditPeriodRef = useRef()
-  const creditBsmvRef = useRef()
-  const creditKkdfRef = useRef()
-  const selectRef = useRef() 
- 
-
+  const refs = {
+    creditAmountRef: useRef(),
+    creditRateRef: useRef(),
+    creditPeriodRef: useRef(),
+    creditBsmvRef: useRef(),
+    creditKkdfRef: useRef(),
+    selectRef: useRef()
+  };
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
     eventStore.setState({ isLoading: true })
+    const {
+      creditAmountRef: creditAmount,
+      creditRateRef: creditRate,
+      creditPeriodRef: creditPeriod,
+      creditBsmvRef: creditBsmv,
+      creditKkdfRef: creditKkdf,
+      selectRef: creditPeriodType,
+    } = Object.keys(refs).reduce((ref1, ref2) => {
+      return {
+        ...ref1,
+        [ref2]: refs[ref2].current.value
+      }
+    }, {})
 
     formSchema
       .validate({
-        creditPeriodType: selectRef.current.value,
-        creditAmount : creditAmountRef.current.value,
-        creditRate : creditRateRef.current.value,
-        creditPeriod : creditPeriodRef.current.value,
-        creditBsmv : creditBsmvRef.current.value,
-        creditKkdf : creditKkdfRef.current.value,
+        creditPeriodType,
+        creditAmount,
+        creditRate,
+        creditPeriod,
+        creditBsmv,
+        creditKkdf,
       }, { abortEarly: false })
-      .then((valid) => {
-        console.log("Valid", valid)           
-       
-        getTogetherMethod(
-          creditAmountRef.current.value,
-          creditRateRef.current.value,
-          creditPeriodRef.current.value,       
-          creditBsmvRef.current.value,
-          creditKkdfRef.current.value
+      .then(() => {         
+        calculateCreditPayback(
+          creditAmount,
+          creditRate,
+          creditPeriod,
+          creditBsmv,
+          creditKkdf
         )       
         eventStore.setState({ isLoading: false })
       })
@@ -82,48 +83,43 @@ const FormSection = () => {
         </div>
         <div className="form__sections">
           <Input
-            ref={creditAmountRef}
-            classname={"form"}
-            containerID={"creditAmountContainer"}
+            ref={refs.creditAmountRef}
             id={"creditAmount"}
             name={"creditAmount"}
-            type={"number"}
-            defaultValue={creditAmount}            
-            label_text={t("form-amount")}
-            span_value={t("form-span-currency")}
+            type={"number"}           
+            label={t("form-amount")}
+            info={t("form-span-currency")}
             error={errors.creditAmount}
+            defaultValue={initialCreditData.creditAmount}
           />
           <Input
-            ref={creditRateRef}
-            classname={"form"}
-            containerID={"creditRateContainer"}
+            ref={refs.creditRateRef}
             id={"creditRate"}
             name={"creditRate"}
-            type={"number"}
-            defaultValue={creditRate}            
-            label_text={t("form-interest")}
-            span_value={t("form-span-percent")}
+            type={"number"}     
+            label={t("form-interest")}
+            info={t("form-span-percent")}
             step={0.01}
             error={errors.creditRate}
+            defaultValue={initialCreditData.creditRate}
           />
         </div>
         <div className="form__sections">
           <Input
-            ref={creditPeriodRef}
-            classname={"form"}
-            containerID={"creditPeriodContainer"}
+            ref={refs.creditPeriodRef}            
+            
             id={"creditPeriod"}
             name={"creditPeriod"}
-            type={"number"}
-            defaultValue={creditPeriod}            
-            label_text={t("form-installment")}
+            type={"number"}     
+            label={t("form-installment")}
             error={errors.creditPeriod}
+            defaultValue={initialCreditData.creditPeriod}
           />
           <select
             className="form__select"
             name="creditPeriodType"
-            defaultValue="month"
-            ref={selectRef}            
+            defaultValue={initialCreditData.creditPeriodType}
+            ref={refs.selectRef}            
           >
             {["week", "month", "year"].map((period, index) => (
               <option key={index} value={period}>
@@ -134,30 +130,26 @@ const FormSection = () => {
         </div>
         <div className="form__sections">
           <Input
-            ref={creditBsmvRef}
-            classname={"form"}
-            containerID={"creditBsmvContainer"}
+            ref={refs.creditBsmvRef}
             id={"creditBsmv"}
             name={"creditBsmv"}
-            type={"number"}
-            defaultValue={creditBsmv}            
-            label_text={t("form-bsmv")}
-            span_value={t("form-span-percent")}
+            type={"number"}        
+            label={t("form-bsmv")}
+            info={t("form-span-percent")}
             step={0.01}
             error={errors.creditBsmv}
+            defaultValue={initialCreditData.creditBsmv}
           />
           <Input
-            ref={creditKkdfRef}
-            classname={"form"}
-            containerID={"creditKkdfContainer"}
+            ref={refs.creditKkdfRef}
             id={"creditKkdf"}
             name={"creditKkdf"}
-            type={"number"}
-            defaultValue={creditKkdf}            
-            label_text={t("form-kkdf")}
-            span_value={t("form-span-percent")}
+            type={"number"}           
+            label={t("form-kkdf")}
+            info={t("form-span-percent")}
             step={0.01}
             error={errors.creditKkdf}
+            defaultValue={initialCreditData.creditKkdf}
           />
         </div>
       </div>
@@ -172,3 +164,6 @@ const FormSection = () => {
 
 export default FormSection
 
+
+
+// .replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1.")

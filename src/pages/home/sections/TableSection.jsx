@@ -30,7 +30,7 @@ const Table = () => {
                 <td>{item.creditRateAmount} {t("form-span-currency")}</td>
                 <td>{item.creditBsmvAmount} {t("form-span-currency")}</td>
                 <td>{item.creditKkdfAmount} {t("form-span-currency")}</td>
-                <td>{item.remaningPrincipalAmount < 0 ? 0 : item.remaningPrincipalAmount} {t("form-span-currency")}</td>
+                <td>{item.remaningPrincipalAmount < 1 ? 0 : item.remaningPrincipalAmount} {t("form-span-currency")}</td>
               </tr>
             ))}
             
