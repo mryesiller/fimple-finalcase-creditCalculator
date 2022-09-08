@@ -44,6 +44,12 @@
     "min-bsmv-error":"Bsmv cannot be under 0.01%",
     "max-bsmv-error":"Bsmv cannot be upper than 20%",
     "min-kkdf-error":"Kkdf cannot be under 0.01%",
-    "max-kkdf-error":"Kkdf cannot be upper than 20%"       
+    "max-kkdf-error":"Kkdf cannot be upper than 20%" ,
+    "table-periodPayment":"Period Payment",
+    "table-principalAmount":"Principal Amount",
+    "table-creditRateAmount":"Credit Rate",
+    "table-bsmvAmount":"Bsmv Rate",
+    "table-kkdfAmount":"Kkdf Rate",
+    "table-remainingPrincipalAmount":"Remaining Principal Amount"      
     
 }

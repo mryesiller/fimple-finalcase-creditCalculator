@@ -84,6 +84,11 @@ recursionNew : (creditAmount,creditRate,creditPeriod,creditBsmv,creditKkdf,credi
   var principalAmount = (creditPeriodPayment - (creditRateAmount+creditBsmvAmount+creditKkdfAmount))
   var remaningPrincipalAmount = (creditAmount - principalAmount)
 
+  principalAmount = (principalAmount).toFixed(2)
+  creditRateAmount = (creditRateAmount).toFixed(2)
+  creditBsmvAmount = (creditBsmvAmount).toFixed(2)
+  creditKkdfAmount = (creditKkdfAmount).toFixed(2)
+  remaningPrincipalAmount = (remaningPrincipalAmount).toFixed(2)
   tableData2.push({
     creditPeriodPayment,principalAmount,creditRateAmount,creditPeriod,creditKkdfAmount,creditBsmvAmount,remaningPrincipalAmount
   })

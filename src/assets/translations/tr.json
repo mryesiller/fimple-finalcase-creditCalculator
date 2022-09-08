@@ -44,5 +44,11 @@
     "min-bsmv-error":"Bsmv oranı 0.01% altında olamaz..",
     "max-bsmv-error":"Bsmv oranı 20% üzerinde olamaz..",
     "min-kkdf-error":"Kkdf oranı 0.01% altında olamaz..",
-    "max-kkdf-error":"Kkdf oranı 20% üzerinde olamaz.."    
+    "max-kkdf-error":"Kkdf oranı 20% üzerinde olamaz..",
+    "table-periodPayment":"Dönem Ödemesi",
+    "table-principalAmount":"Ana Para",
+    "table-creditRateAmount":"Kredi faizi",
+    "table-bsmvAmount":"BSMV Faizi",
+    "table-kkdfAmount":"KKDF faizi",
+    "table-remainingPrincipalAmount":"Kalan Ana Para"    
 }
