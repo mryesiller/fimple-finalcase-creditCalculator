@@ -45,7 +45,7 @@ const Info = () => {
       <InfoText
         className={"info"}
         title={t("form-installment")}
-        text={creditPeriodPayment.toFixed(2)}
+        text={creditPeriodPayment}
         span={t("form-span-currency")}
       />
       <InfoText

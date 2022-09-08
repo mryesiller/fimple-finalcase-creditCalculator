@@ -3,7 +3,7 @@ import create from "zustand"
 const initialState = {
   darkMode: false,
   isLoading: false,
-  errors: null,
+  errors: false,
 }
 
 const eventMethods = (set, get) => ({
