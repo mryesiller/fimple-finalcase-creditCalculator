@@ -1,17 +1,19 @@
 import React from "react"
-import {Audio} from 'react-loader-spinner'
+import ClipLoader from "react-spinners/ClipLoader";
+import { eventStore } from "../../../context/eventContext";
 
 
 const Loading = () => {
-  return <Audio
-  height="80"
-  width="80"
-  radius="9"
-  color="green"
-  ariaLabel="loading"
-  wrapperStyle
-  wrapperClass
-/>
+
+  const {isLoading} = eventStore()
+
+  const override = {
+    display: "block",
+    margin: "10rem auto",
+    borderColor: "red",
+  };
+
+  return <ClipLoader color="#000000" loading={isLoading} cssOverride={override}  size={200} />
 }
 
 export default Loading

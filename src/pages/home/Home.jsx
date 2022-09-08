@@ -18,8 +18,7 @@ const Home = () => {
         <GraphicSection />
         <InfoSection />
       </section>
-      
-      <TableSection />
+      {isLoading ? <Loading /> : <TableSection />}      
     </Fragment>
   )
 }

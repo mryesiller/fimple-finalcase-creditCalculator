@@ -15,7 +15,7 @@ const FormSection = () => {
   const { t } = useTranslation()  
 
   const { handleFormSubmit } = formStore()
-  const { isLoading, errors} = eventStore()
+  const { errors} = eventStore()
   const {
     creditAmount,
     creditRate,
@@ -33,7 +33,7 @@ const FormSection = () => {
   const creditKkdfRef = useRef()
   const selectRef = useRef() 
  
-  
+
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
