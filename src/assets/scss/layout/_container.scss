@@ -2,6 +2,8 @@
 .container {
     max-width: 1200px;
     margin:0 auto;
+
+    
 }
 
 .container-fluid {
@@ -19,7 +21,18 @@
 }
 
 main {
-    
+    padding:1rem;
     margin-top: calc(var(--header-height) + 5.5rem);
+
+    @media screen and (max-width: 980px) {        
+        padding:2.5rem 1rem;
+        margin: auto;
+    }
+
+    @media screen and (max-width: 620px) {
+        width: 100%;
+            
+        
+    }
 }
 

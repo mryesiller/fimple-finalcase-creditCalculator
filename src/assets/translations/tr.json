@@ -1,6 +1,6 @@
 {
     "language": "tr",
-    "main-title":"FIMPLE REACT PRACTICUM KREDI HESAPLAMA",
+    "main-title":"FIMPLE KREDI HESAPLAMA",
     "form-title":"Kredi Formu",
     "form-amount" : "Kredi Miktarı",    
     "form-installment":"Taksit",
@@ -50,5 +50,7 @@
     "table-creditRateAmount":"Kredi faizi",
     "table-bsmvAmount":"BSMV Faizi",
     "table-kkdfAmount":"KKDF faizi",
-    "table-remainingPrincipalAmount":"Kalan Ana Para"    
+    "table-remainingPrincipalAmount":"Kalan Ana Para",
+    "basic-rate" : "Basit",
+    "compound-rate" : "Bileşik"     
 }

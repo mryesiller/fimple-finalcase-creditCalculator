@@ -9,7 +9,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart
 const Graphic = () => {
   const { t } = useTranslation()
   const { darkMode } = eventStore()
-  const { creditAmount, creditRateAmount, creditTaxAmount } = dataStore()
+  const { creditAmount, totalRateAmount, totalBsmvAndKkdfAmount } = dataStore()
 
   const options = {
     animationEnabled: true,
@@ -28,8 +28,8 @@ const Graphic = () => {
         indexLabelFontColor: `${darkMode ? "#fff" : "#333"}`,
         dataPoints: [
           { y: creditAmount, label: t("graphic-amount") },
-          { y: creditRateAmount, label: t("graphic-interest") },
-          { y: creditTaxAmount, label: t("graphic-tax") },
+          { y: totalRateAmount, label: t("graphic-interest") },
+          { y: totalBsmvAndKkdfAmount, label: t("graphic-tax") },
         ],
       },
     ],

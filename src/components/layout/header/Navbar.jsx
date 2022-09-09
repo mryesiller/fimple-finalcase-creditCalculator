@@ -23,7 +23,7 @@ const Navbar = () => {
         <img src={darkMode ? lightLogo : darkLogo} alt="logo" />
       </a>
       <h1 className="nav__title">{t("main-title")}</h1>
-      <div className="nav__button">
+      <div className="nav__button flex">
         <i
           className={
             darkMode ? "ri-sun-line change-theme" : "ri-moon-line change-theme"

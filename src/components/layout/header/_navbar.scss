@@ -17,7 +17,10 @@
 
     &__title {
         letter-spacing: 0.1rem;
-
+    }
+    
+    &__button {        
+        align-items: center;
     }
 
     &__button i{
@@ -25,8 +28,28 @@
     }
 
     &__language {
-        margin-left: 1rem;
+        margin:0 1rem;
         outline: none;
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 680px) {
+        &__title {
+            font-size: var(--small-font-size);
+        }
+
+        &__button {
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            margin-right: 1rem;
+
+            & * {
+                margin-bottom:5px;
+            }
+        }
+    
+        
     }
 }    

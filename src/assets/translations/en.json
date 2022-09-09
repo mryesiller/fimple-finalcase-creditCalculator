@@ -1,6 +1,6 @@
 {
     "language": "en",
-    "main-title":"FIMPLE REACT PRACTICUM CREDIT CALCULATOR",
+    "main-title":"FIMPLE CREDIT CALCULATOR",
     "form-title":"Credit Form",
     "form-amount" : "Credit Amount",    
     "form-installment":"Installment",
@@ -50,6 +50,8 @@
     "table-creditRateAmount":"Credit Rate",
     "table-bsmvAmount":"Bsmv Rate",
     "table-kkdfAmount":"Kkdf Rate",
-    "table-remainingPrincipalAmount":"Remaining Principal Amount"      
+    "table-remainingPrincipalAmount":"Remaining Amount" ,
+    "basic-rate" : "Basic",
+    "compound-rate" : "Complex"     
     
 }

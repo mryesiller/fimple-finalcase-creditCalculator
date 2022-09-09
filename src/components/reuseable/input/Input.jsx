@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react"
 
 const Input = (
   { name, info, type, label, onChange, error, step, defaultValue },
@@ -8,7 +8,7 @@ const Input = (
     <div className={`input__container`}>
       <input
         ref={ref}
-        id={name}                                                                                             
+        id={name}
         name={name}
         type={type}
         step={step}
@@ -21,7 +21,7 @@ const Input = (
       <span className={`input__info`}>{info}</span>
       {error && <p className={`input__error`}>{error}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default React.forwardRef(Input);
+export default forwardRef(Input)

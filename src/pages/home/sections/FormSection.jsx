@@ -1,20 +1,19 @@
-import React, { useRef} from "react"
+import React, { useRef } from "react"
 import { useTranslation } from "react-i18next"
 
 import { dataStore, initialCreditData } from "../../../context/dataContext"
 import { eventStore } from "../../../context/eventContext"
-import { formStore } from "../../../context/formContext"
 import { formSchema } from "../../../helpers/yupFormSchema"
 
 import dollar from "../../../assets/images/dollar.png"
 import { Input } from "../../../components"
+import ToggleButton from "react-toggle-button"
 
 const FormSection = () => {
-
-  const { t } = useTranslation()  
-  const { handleFormSubmit } = formStore()
-  const { errors} = eventStore()
-  const { calculateCreditPayback } = dataStore();
+  const { t } = useTranslation()
+  const { errors, calculateMode } = eventStore()
+  const { calculateCompoundCreditPayback, calculateBasicCreditPayback } =
+    dataStore()
 
   const refs = {
     creditAmountRef: useRef(),
@@ -22,8 +21,8 @@ const FormSection = () => {
     creditPeriodRef: useRef(),
     creditBsmvRef: useRef(),
     creditKkdfRef: useRef(),
-    selectRef: useRef()
-  };
+    selectRef: useRef(),
+  }
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
@@ -38,37 +37,51 @@ const FormSection = () => {
     } = Object.keys(refs).reduce((ref1, ref2) => {
       return {
         ...ref1,
-        [ref2]: refs[ref2].current.value
+        [ref2]: refs[ref2].current.value,
       }
     }, {})
 
     formSchema
-      .validate({
-        creditPeriodType,
-        creditAmount,
-        creditRate,
-        creditPeriod,
-        creditBsmv,
-        creditKkdf,
-      }, { abortEarly: false })
-      .then(() => {         
-        calculateCreditPayback(
+      .validate(
+        {
+          creditPeriodType,
           creditAmount,
           creditRate,
           creditPeriod,
           creditBsmv,
-          creditKkdf
-        )       
+          creditKkdf,
+        },
+        { abortEarly: false }
+      )
+      .then(() => {
+        if (calculateMode) {
+          calculateCompoundCreditPayback(
+            creditAmount,
+            creditRate,
+            creditPeriod,
+            creditBsmv,
+            creditKkdf
+          )
+        } else {
+          calculateBasicCreditPayback(
+            creditAmount,
+            creditRate,
+            creditPeriod,
+            creditBsmv,
+            creditKkdf
+          )
+        }
+
         eventStore.setState({ isLoading: false })
       })
       .catch((err) => {
         const validationErrors = {}
         err.inner.forEach((error) => {
           validationErrors[error.path] = error.message
-        })        
-        eventStore.setState({ errors: validationErrors })         
-        setTimeout(() => {          
-          eventStore.setState({ errors: false })          
+        })
+        eventStore.setState({ errors: validationErrors })
+        setTimeout(() => {
+          eventStore.setState({ errors: false })
         }, 2000)
         eventStore.setState({ isLoading: false })
       })
@@ -86,7 +99,7 @@ const FormSection = () => {
             ref={refs.creditAmountRef}
             id={"creditAmount"}
             name={"creditAmount"}
-            type={"number"}           
+            type={"number"}
             label={t("form-amount")}
             info={t("form-span-currency")}
             error={errors.creditAmount}
@@ -96,7 +109,7 @@ const FormSection = () => {
             ref={refs.creditRateRef}
             id={"creditRate"}
             name={"creditRate"}
-            type={"number"}     
+            type={"number"}
             label={t("form-interest")}
             info={t("form-span-percent")}
             step={0.01}
@@ -106,11 +119,10 @@ const FormSection = () => {
         </div>
         <div className="form__sections">
           <Input
-            ref={refs.creditPeriodRef}            
-            
+            ref={refs.creditPeriodRef}
             id={"creditPeriod"}
             name={"creditPeriod"}
-            type={"number"}     
+            type={"number"}
             label={t("form-installment")}
             error={errors.creditPeriod}
             defaultValue={initialCreditData.creditPeriod}
@@ -119,7 +131,7 @@ const FormSection = () => {
             className="form__select"
             name="creditPeriodType"
             defaultValue={initialCreditData.creditPeriodType}
-            ref={refs.selectRef}            
+            ref={refs.selectRef}
           >
             {["week", "month", "year"].map((period, index) => (
               <option key={index} value={period}>
@@ -133,7 +145,7 @@ const FormSection = () => {
             ref={refs.creditBsmvRef}
             id={"creditBsmv"}
             name={"creditBsmv"}
-            type={"number"}        
+            type={"number"}
             label={t("form-bsmv")}
             info={t("form-span-percent")}
             step={0.01}
@@ -144,7 +156,7 @@ const FormSection = () => {
             ref={refs.creditKkdfRef}
             id={"creditKkdf"}
             name={"creditKkdf"}
-            type={"number"}           
+            type={"number"}
             label={t("form-kkdf")}
             info={t("form-span-percent")}
             step={0.01}
@@ -152,18 +164,40 @@ const FormSection = () => {
             defaultValue={initialCreditData.creditKkdf}
           />
         </div>
-      </div>
-      <div className="form__button">
-        <button type="submit" className="btn btn__success">
-          {t("form-button")}
-        </button>
+
+        <div className="form__button">
+          <ToggleButton
+            className="form__toggle"
+            inactiveLabel={t("basic-rate")}
+            activeLabel={t("compound-rate")}
+            value={calculateMode}
+            onToggle={(value) => {
+              eventStore.setState({ calculateMode: !calculateMode })
+            }}
+            colors={{
+              activeThumb: {
+                base: "rgb(250,250,250)",
+              },
+              inactiveThumb: {
+                base: "rgb(250,250,250)",
+              },
+              active: {
+                base: "rgb(1,124,66)",
+              },
+              inactive: {
+                base: "rgb(1,124,66)",
+              },
+            }}
+          />
+          <button type="submit" className="btn btn__success">
+            {t("form-button")}
+          </button>
+        </div>
       </div>
     </form>
   )
 }
 
 export default FormSection
-
-
 
 // .replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1.")

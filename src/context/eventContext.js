@@ -2,6 +2,7 @@ import create from "zustand"
 
 const initialState = {
   darkMode: false,
+  calculateMode: true,
   isLoading: false,
   errors: false,
 }

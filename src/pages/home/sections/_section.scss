@@ -1,20 +1,21 @@
 .form {
   display: flex;
-  padding: 1.75rem 1rem;
+  padding: 0 0.5rem;
   border-radius: 10px;
   border: 1px solid var(--text-color);
   box-shadow: 2px 2px 8px 8px rgba(0, 0, 0, 0.2);
 
   &__container {
-    grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
+    grid-template-columns: 1.4fr 1.5fr 1.5fr 1.5fr 1.5fr;
     
   }
 
   &__sections {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    margin:0 10px;
+    justify-content:flex-start;
+    padding:4rem 1rem;
+    margin:0 10px;   
   }
 
   &__group {
@@ -27,13 +28,15 @@
 
   &__button {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
+    padding: 5rem 1rem;
 
     button {
       padding: 0.5rem 2.5rem;
-      font-size: 1.5rem;
-      margin-left: 2rem;
+      font-size: 1.5rem;     
+      margin-top:1rem;
       letter-spacing: 0.1rem;
       border: 1px solid var(--text-color);
       border-radius: 8px;
@@ -67,55 +70,57 @@
       height: 4.5rem;
     }
   }
-}
-
-.input {
-  &__container {
-    grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
-    margin-bottom: 10px;
-
-    & input {
-      border-radius: 10px;
-      width: 190px;
-      font-size: var(--normal-font-size);
-      border: 1px solid var(--text-color);
-      line-height: 2.75rem;
-  
-      margin: 0;
-  
-      &[type="number"],
-      &[type="number"]::-webkit-inner-spin-button,
-      &[type="number"]::-webkit-outer-spin-button {
-        padding-left: 0.75rem;
-        -webkit-appearance: none;
-        appearance: none;
-      }
-    }
-  
-  }
-
  
-  // #installment {
-  //     width: 35%;
-  // }
+  @media screen and (max-width: 1120px) {
+    
+    &__logo {
+      display:none;
+    }    
+  }  
 
-  // .tax input {
-  //     width: 100px;
-  // }
+  @media screen and (max-width: 1000px) {
+    
+    justify-content: center;
+    align-items: center;
+    padding:1rem 0;
 
-  &__label {
-    @include label;
+    &__container {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__sections {
+      padding: 1rem 1rem;
+    }
+
+    &__button {
+      padding: 2rem 1rem;
+    }
+
+   
   }
 
-  &__info {
-    @include span;
-    transform: translate(-2.5rem, 0.8rem);
-  }
+  @media screen and (max-width: 620px) {
+    
+    justify-content: center;
+    align-items: center;
+    padding:1rem 0;
 
-  &__error {
-    font-size: var(--small-font-size);
-    color: red;
+    &__container {
+      grid-template-columns: 1fr;
+    }
+
+    &__sections {
+      padding: 1rem 1rem;
+    }
+
+    &__button {
+      padding: 2.5rem 1rem;
+    }
+
+   
   }
+  
+  
 }
 
 .info {
@@ -144,6 +149,24 @@
     justify-content: space-between;
     border-bottom: 1px solid var(--text-color);
   }
+
+  @media screen and (max-width: 980px) {    
+    gap: 0.5rem;
+
+    &__text {
+      font-size:var(--small-font-size);
+    }
+      
+  }
+
+  @media screen and (max-width: 620px) {
+    
+    grid-template-columns:1fr ;
+    
+    
+    
+  }
+
 }
 
 .table {
@@ -152,22 +175,58 @@
   margin-top: 2rem;
   min-height: 50vh;
 
+  table {    
+    border:1px solid var(--text-color);
+    border-collapse: collapse;
+    width: 90%;
+
+    th,td {
+      padding: 0.5rem;
+      text-align: center;
+    }
+  
+    th {
+      height: 3rem;
+      border-bottom: 3px solid var(--text-color);
+    } 
+
+    tr:nth-child(even) {
+      background-color: var(--table-color);
+    }
+  }
+  
+
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 3rem;
+    padding: 1rem;
     border-collapse: collapse;
   }
 
-  th {
-    padding: 0.5rem 2rem;
-    border-bottom: 3px solid var(--text-color);
+  
+
+   
+
+  @media screen and (max-width: 980px) {
+   
+    
+    thead,th,td {
+      
+      font-size: var(--small-font-size);
+    }
+    
   }
 
-  td {
-    padding: 0 2rem;
-    border-bottom: 1px solid var(--text-color);
+  @media screen and (max-width: 620px) {
+    padding-top: 1rem;
+    
+    thead,th,td {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.6rem;
+      font-weight: bold;
+    }
+    
   }
 }
