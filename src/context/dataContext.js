@@ -46,7 +46,7 @@ const creditMethods = (set, get) => ({
     const totalBsmvAndKkdfAmount =
       totalRateAmount * ((Number(creditBsmv) + Number(creditKkdf)) / 100)
 
-    const totalTaxAmount = totalRateAmount + totalBsmvAndKkdfAmount
+    const totalTaxAmount = (totalRateAmount + totalBsmvAndKkdfAmount).toFixed(2)
     const totalTaxPeriodAmount = totalTaxAmount / creditPeriod
 
     const totalPaymentAmount = parseFloat(creditAmount) + totalTaxAmount
