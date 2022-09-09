@@ -51,6 +51,8 @@
     "table-bsmvAmount":"BSMV Faizi",
     "table-kkdfAmount":"KKDF faizi",
     "table-remainingPrincipalAmount":"Kalan Ana Para",
+    "table-show-details":"Detayları Göster",
+    "table-hide-details":"Detayları Gizle",
     "basic-rate" : "Basit",
     "compound-rate" : "Bileşik"     
 }

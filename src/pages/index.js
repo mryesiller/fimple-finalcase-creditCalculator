@@ -1,5 +1,5 @@
 import Home from "./home/Home"
 import Error from "./error/ErrorPage"
-import Shared from "./shared/Shared"
+import SharedLayout from "./sharedLayout/SharedLayout"
 
-export { Home, Error, Shared }
+export { Home, Error, SharedLayout }

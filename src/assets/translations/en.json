@@ -51,6 +51,8 @@
     "table-bsmvAmount":"Bsmv Rate",
     "table-kkdfAmount":"Kkdf Rate",
     "table-remainingPrincipalAmount":"Remaining Amount" ,
+    "table-show-details":"Show Details",
+    "table-hide-details":"Hide Details",
     "basic-rate" : "Basic",
     "compound-rate" : "Complex"     
     

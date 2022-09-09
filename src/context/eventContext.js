@@ -2,6 +2,8 @@ import create from "zustand"
 
 const initialState = {
   darkMode: false,
+  tableOverflowMode: false,
+  tableShowHideMode: false,
   calculateMode: true,
   isLoading: false,
   errors: false,
@@ -17,6 +19,15 @@ const eventMethods = (set, get) => ({
   },
   setErrors: (error) => {
     set({ errors: error })
+  },
+  toggleTableOverflow: () => {
+    const { tableOverflowMode } = get()
+
+    document
+      .getElementById("table")
+      .classList[tableOverflowMode ? "remove" : "add"]("table-overflow")
+
+    set({ tableOverflowMode: !tableOverflowMode })
   },
 })
 

@@ -1,13 +1,13 @@
 import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Home, Error, Shared } from "./pages"
+import { Home, Error, SharedLayout } from "./pages"
 
 function App() {
   // TODO: Rename Shared -> ??
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Shared />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
         </Route>
         <Route path="*" element={<Error />} />
