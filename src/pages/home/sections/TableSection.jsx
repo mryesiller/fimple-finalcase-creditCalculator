@@ -3,6 +3,8 @@ import { dataStore } from "../../../context/dataContext"
 import { eventStore } from "../../../context/eventContext"
 import { useTranslation } from "react-i18next"
 
+import InfoCredit from "./InfoCredit"
+
 const Table = () => {
   const { tableData } = dataStore()
   const { toggleTableOverflow, tableOverflowMode, tableShowHideMode } =
@@ -74,7 +76,8 @@ const Table = () => {
         </div>
       ) : (
         <div className="table__info">
-          <h1>GENEL BİLGİLER</h1>
+          <h1>{t("info-title")}</h1>
+          <InfoCredit />
         </div>
       )}
 

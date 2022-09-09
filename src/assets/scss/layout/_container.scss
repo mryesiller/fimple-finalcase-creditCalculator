@@ -27,11 +27,13 @@
 .disabled {
     cursor:not-allowed;
     pointer-events: none;
+    
 }
 
 .active {
     cursor:not-allowed;
-    pointer-events: none;
+    pointer-events: none; 
+    color:white !important;   
     background-color: lighten(rgb(58, 155, 83), 10%) !important;
 }
 
