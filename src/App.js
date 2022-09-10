@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Home, Error, SharedLayout } from "./pages"
 
 function App() {
-  // TODO: Rename Shared -> ??
   return (
     <BrowserRouter>
       <Routes>

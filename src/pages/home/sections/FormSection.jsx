@@ -38,6 +38,7 @@ const FormSection = () => {
     }
   }, [isCalculated])
 
+  // form handle funtion
   const handleSubmitForm = (e) => {
     e.preventDefault()
     dataStore.setState({ isCalculated: false })
@@ -75,23 +76,21 @@ const FormSection = () => {
         { abortEarly: false }
       )
       .then(() => {
-        if (!calculateMode) {
-          calculateCompoundCreditPayback({
-            creditAmount,
-            creditRate,
-            creditPeriod,
-            creditBsmv,
-            creditKkdf,
-          })
-        } else {
-          calculateBasicCreditPayback({
-            creditAmount,
-            creditRate,
-            creditPeriod,
-            creditBsmv,
-            creditKkdf,
-          })
-        }
+        !calculateMode
+          ? calculateCompoundCreditPayback({
+              creditAmount,
+              creditRate,
+              creditPeriod,
+              creditBsmv,
+              creditKkdf,
+            })
+          : calculateBasicCreditPayback({
+              creditAmount,
+              creditRate,
+              creditPeriod,
+              creditBsmv,
+              creditKkdf,
+            })
 
         eventStore.setState({ isLoading: false })
         dataStore.setState({ isCalculated: true })

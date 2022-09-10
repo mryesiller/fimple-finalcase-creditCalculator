@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Loading, Error, Table } from "../../components"
+import { Loading } from "../../components"
 import { eventStore } from "../../context/eventContext"
 
 import FormSection from "./sections/FormSection"
@@ -8,8 +8,7 @@ import GraphicSection from "./sections/GraphicSection"
 import TableSection from "./sections/TableSection"
 
 const Home = () => {
-
-  const {isLoading} = eventStore()
+  const { isLoading } = eventStore()
 
   return (
     <Fragment>
@@ -18,7 +17,7 @@ const Home = () => {
         <GraphicSection />
         <InfoSection />
       </section>
-      {isLoading ? <Loading /> : <TableSection />}      
+      {isLoading ? <Loading /> : <TableSection />}
     </Fragment>
   )
 }

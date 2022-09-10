@@ -1,6 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
+// General Informations in this component
 const InfoCredit = () => {
   const { t } = useTranslation()
 
