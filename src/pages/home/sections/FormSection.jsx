@@ -54,7 +54,7 @@ const FormSection = () => {
         { abortEarly: false }
       )
       .then(() => {
-        if (calculateMode) {
+        if (!calculateMode) {
           calculateCompoundCreditPayback(
             creditAmount,
             creditRate,
