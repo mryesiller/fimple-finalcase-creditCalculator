@@ -267,12 +267,12 @@
     grid-template-columns: 1fr 1fr;
 
     button {
-      padding: 1rem;
+      padding:1.5rem 1rem ;
       color:var(--text-color);
       letter-spacing: 0.1rem;
       font-size: 1.25rem;
       font-weight: 500;
-      border:1px solid var(--text-color);      
+      border:1px solid var(--text-color);           
       border-top-left-radius:10px;
       border-top-right-radius:10px;
       background-color: var(--body-color);
@@ -343,4 +343,13 @@
     }
     
   }
+}
+
+
+.active {
+  cursor:not-allowed;
+  pointer-events: none; 
+  color:white !important;   
+  background-color: lighten(rgb(58, 155, 83), 10%) !important;
+  border-top:5px solid var(--text-color) !important;      
 }

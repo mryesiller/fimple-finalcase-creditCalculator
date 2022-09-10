@@ -49,13 +49,15 @@ const creditMethods = (set, get) => ({
     const totalTaxAmount = (totalRateAmount + totalBsmvAndKkdfAmount).toFixed(2)
     const totalTaxPeriodAmount = totalTaxAmount / creditPeriod
 
-    const totalPaymentAmount = parseFloat(creditAmount) + totalTaxAmount
+    const totalPaymentAmount = Number(creditAmount) + Number(totalTaxAmount)
+
     const creditPeriodPayment = (totalPaymentAmount / creditPeriod).toFixed(2)
     const principalAmount = (
       creditPeriodPayment - totalTaxPeriodAmount
     ).toFixed(2)
 
     set({
+      creditRate,
       totalRateAmount,
       totalBsmvAndKkdfAmount,
       totalTaxAmount,
