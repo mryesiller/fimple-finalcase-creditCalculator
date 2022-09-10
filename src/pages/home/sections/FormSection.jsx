@@ -166,29 +166,33 @@ const FormSection = () => {
         </div>
 
         <div className="form__button">
-          <ToggleButton
-            className="form__toggle"
-            inactiveLabel={t("basic-rate")}
-            activeLabel={t("compound-rate")}
-            value={calculateMode}
-            onToggle={(value) => {
-              eventStore.setState({ calculateMode: !calculateMode })
-            }}
-            colors={{
-              activeThumb: {
-                base: "rgb(250,250,250)",
-              },
-              inactiveThumb: {
-                base: "rgb(250,250,250)",
-              },
-              active: {
-                base: "rgb(1,124,66)",
-              },
-              inactive: {
-                base: "rgb(1,124,66)",
-              },
-            }}
-          />
+          <div className="form__toggle">
+            <h4>{t("compound-rate")}</h4>
+            <ToggleButton
+              inactiveLabel={""}
+              activeLabel={""}
+              value={calculateMode}
+              onToggle={(value) => {
+                eventStore.setState({ calculateMode: !calculateMode })
+              }}
+              colors={{
+                activeThumb: {
+                  base: "rgb(250,250,250)",
+                },
+                inactiveThumb: {
+                  base: "rgb(250,250,250)",
+                },
+                active: {
+                  base: "rgb(1,124,66)",
+                },
+                inactive: {
+                  base: "rgb(1,124,66)",
+                },
+              }}
+            />
+            <h4>{t("basic-rate")}</h4>
+          </div>
+
           <button type="submit" className="btn btn__success">
             {t("form-button")}
           </button>

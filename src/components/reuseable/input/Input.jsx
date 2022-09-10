@@ -1,12 +1,13 @@
 import React, { forwardRef } from "react"
 
 const Input = (
-  { name, info, type, label, onChange, error, step, defaultValue },
+  { name, info, type, label, onChange, error, step, defaultValue, ...props },
   ref
 ) => {
   return (
     <div className={`input__container`}>
       <input
+        {...props}
         ref={ref}
         id={name}
         name={name}

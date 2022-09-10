@@ -1,8 +1,20 @@
-import React from "react"
+import React, { forwardRef, useImperativeHandle, useState } from "react"
 
-const InfoText = ({ className, title, text, span }) => {
+const InfoText = ({ title, text, span, onClick, ...props }, ref) => {
+  const [value, setValue] = useState(true)
+  const [background, setBackground] = useState("info__text")
+
+  useImperativeHandle(ref, () => {
+    return {
+      changeBackground: () => {
+        setValue(!value)
+        value ? setBackground("info__text change") : setBackground("info__text")
+      },
+    }
+  })
+
   return (
-    <div className="info__text">
+    <div {...props} ref={ref} className={background} onClick={onClick}>
       <h2>{title}</h2>
       <h3>
         {text}
@@ -12,4 +24,4 @@ const InfoText = ({ className, title, text, span }) => {
   )
 }
 
-export default InfoText
+export default forwardRef(InfoText)

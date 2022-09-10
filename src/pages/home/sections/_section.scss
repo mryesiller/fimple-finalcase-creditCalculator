@@ -70,6 +70,20 @@
       height: 4.5rem;
     }
   }
+
+  &__toggle {
+    width: 100%;
+    padding:0 0.5rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 620px) {
+      width: 70%;
+    
+      
+    }
+  }
  
   @media screen and (max-width: 1120px) {
     
@@ -148,6 +162,15 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--text-color);
+    cursor: pointer;
+  }
+
+  .change {
+    background-color:  rgb(58, 155, 83) !important;   
+
+    h2,h3 {
+      color:white !important;
+    }
   }
 
   @media screen and (max-width: 980px) {    

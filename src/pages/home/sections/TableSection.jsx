@@ -20,7 +20,7 @@ const Table = () => {
             eventStore.setState({ tableShowHideMode: !tableShowHideMode })
           }
         >
-          GENEL BİLGİLER
+          {t("info-button-general")}
         </button>
         <button
           className={tableShowHideMode ? "active" : ""}
@@ -28,7 +28,7 @@ const Table = () => {
             eventStore.setState({ tableShowHideMode: !tableShowHideMode })
           }
         >
-          ÖDEME PLANI
+          {t("info-button-payment")}
         </button>
       </div>
 

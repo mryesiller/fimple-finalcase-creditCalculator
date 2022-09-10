@@ -56,6 +56,8 @@
     "basic-rate" : "Basit",
     "compound-rate" : "Bileşik",
     "info-title" : "Genel Bilgiler",
+    "info-button-general" : "GENEL BİLGİLER",
+    "info-button-payment" : "ÖDEME PLANI",
     "info-1" : "Faiz oranları tercih edilen dönem ödemesine göre girilmelidir." ,
     "info-2" : "Ödeme planı, faiz oranı ve kredi tutarı değiştirildiğinde otomatik olarak güncellenir."  ,
     "info-3" :  "Yıllık taksit sayısı 1 - 30 yıl, Aylık taksit sayıs 3-120 ay ,Haftalık taksit sayısı 4-52 hafta aralığındadır.",
