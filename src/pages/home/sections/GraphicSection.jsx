@@ -27,9 +27,21 @@ const Graphic = () => {
         startAngle: -90,
         indexLabelFontColor: `${darkMode ? "#fff" : "#333"}`,
         dataPoints: [
-          { y: creditAmount, label: t("graphic-amount") },
-          { y: totalRateAmount, label: t("graphic-interest") },
-          { y: totalBsmvAndKkdfAmount, label: t("graphic-tax") },
+          {
+            y: creditAmount,
+            label: t("graphic-amount"),
+            color: "rgb(255,96,0)",
+          },
+          {
+            y: totalRateAmount,
+            label: t("graphic-interest"),
+            color: "rgb(210,0,161)",
+          },
+          {
+            y: totalBsmvAndKkdfAmount,
+            label: t("graphic-tax"),
+            color: "rgb(168, 255, 0)",
+          },
         ],
       },
     ],

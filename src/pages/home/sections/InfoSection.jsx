@@ -12,7 +12,7 @@ const Info = () => {
   const textRef5 = React.useRef()
   const textRef6 = React.useRef()
 
-  const handleChangeBackground1 = (ref) => {
+  const handleChangeBackground = (ref) => {
     ref.current.changeBackground()
   }
 
@@ -32,7 +32,7 @@ const Info = () => {
       <InfoText
         ref={textRef1}
         onClick={() => {
-          handleChangeBackground1(textRef1)
+          handleChangeBackground(textRef1)
         }}
         title={t("form-amount")}
         text={creditAmount}
@@ -41,7 +41,7 @@ const Info = () => {
       <InfoText
         ref={textRef2}
         onClick={() => {
-          handleChangeBackground1(textRef2)
+          handleChangeBackground(textRef2)
         }}
         title={t("form-interest")}
         text={creditRate}
@@ -50,7 +50,7 @@ const Info = () => {
       <InfoText
         ref={textRef3}
         onClick={() => {
-          handleChangeBackground1(textRef3)
+          handleChangeBackground(textRef3)
         }}
         title={t("installment-period")}
         text={creditPeriod}
@@ -59,7 +59,7 @@ const Info = () => {
       <InfoText
         ref={textRef4}
         onClick={() => {
-          handleChangeBackground1(textRef4)
+          handleChangeBackground(textRef4)
         }}
         title={t("total-interest")}
         text={totalTaxAmount}
@@ -68,7 +68,7 @@ const Info = () => {
       <InfoText
         ref={textRef5}
         onClick={() => {
-          handleChangeBackground1(textRef5)
+          handleChangeBackground(textRef5)
         }}
         title={t("form-installment")}
         text={creditPeriodPayment}
@@ -78,7 +78,7 @@ const Info = () => {
       <InfoText
         ref={textRef6}
         onClick={() => {
-          handleChangeBackground1(textRef6)
+          handleChangeBackground(textRef6)
         }}
         title={t("total-payback")}
         text={totalPaymentAmount}

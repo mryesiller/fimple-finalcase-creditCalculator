@@ -45,6 +45,7 @@
     "max-bsmv-error":"Bsmv oranı 50% üzerinde olamaz..",
     "min-kkdf-error":"Kkdf oranı 0.01% altında olamaz..",
     "max-kkdf-error":"Kkdf oranı 50% üzerinde olamaz..",
+    "table-period":"Dönem",
     "table-periodPayment":"Taksit",
     "table-principalAmount":"Anapara",
     "table-creditRateAmount":"Kredi faizi",

@@ -3,8 +3,8 @@ import create from "zustand"
 const initialState = {
   darkMode: false,
   tableOverflowMode: false,
-  tableShowHideMode: false,
   calculateMode: true,
+  selectedTab: "general",
   isLoading: false,
   errors: false,
 }

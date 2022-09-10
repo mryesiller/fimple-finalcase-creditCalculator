@@ -45,6 +45,7 @@
     "max-bsmv-error":"Bsmv cannot be upper than 50%",
     "min-kkdf-error":"Kkdf cannot be under 0.01%",
     "max-kkdf-error":"Kkdf cannot be upper than 50%" ,
+    "table-period":"Period",
     "table-periodPayment":"Installment",
     "table-principalAmount":"Principal",
     "table-creditRateAmount":"Credit Rate",

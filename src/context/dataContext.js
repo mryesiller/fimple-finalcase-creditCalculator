@@ -1,5 +1,9 @@
 import create from "zustand"
 
+const initialData = {
+  isCalculated: false,
+}
+
 export const initialCreditData = {
   creditAmount: 10000,
   creditPeriod: 12,
@@ -21,101 +25,99 @@ const calculatedData = {
 }
 
 const creditMethods = (set, get) => ({
-  calculateBasicCreditPayback: (
-    creditAmount,
-    creditRate,
-    creditPeriod,
-    creditBsmv,
-    creditKkdf,
-    tableData = []
-  ) => {
+  calculateBasicCreditPayback: (args) => {
+    const {
+      creditAmount,
+      creditRate,
+      creditPeriod,
+      creditBsmv,
+      creditKkdf,
+      tableData = [],
+    } = Object.keys(args).reduce((prev, key) => {
+      const value = args[key]
+      return {
+        ...prev,
+        // If arg (tableData) is an array or object, return it as is
+        // otherwise, return cast it to a number
+        [key]: typeof value !== "object" ? Number(value) : value,
+      }
+    }, {})
+
     const totalRateAmount = creditAmount * (creditRate / 100) * creditPeriod
-    const totalCreditBsmvAmount = (
-      totalRateAmount *
-      (Number(creditBsmv) / 100)
-    ).toFixed(2)
-    const totalCreditKkdfAmount = (
-      totalRateAmount *
-      (Number(creditKkdf) / 100)
-    ).toFixed(2)
-
-    const creditRateAmount = (totalRateAmount / creditPeriod).toFixed(2)
-    const creditBsmvAmount = (totalCreditBsmvAmount / creditPeriod).toFixed(2)
-    const creditKkdfAmount = (totalCreditKkdfAmount / creditPeriod).toFixed(2)
-
     const totalBsmvAndKkdfAmount =
-      totalRateAmount * ((Number(creditBsmv) + Number(creditKkdf)) / 100)
+      totalRateAmount * ((creditBsmv + creditKkdf) / 100)
 
-    const totalTaxAmount = (totalRateAmount + totalBsmvAndKkdfAmount).toFixed(2)
+    const totalCreditBsmvAmount = totalRateAmount * (creditBsmv / 100)
+    const totalCreditKkdfAmount = totalRateAmount * (creditKkdf / 100)
+    const totalTaxAmount = totalRateAmount + totalBsmvAndKkdfAmount
     const totalTaxPeriodAmount = totalTaxAmount / creditPeriod
-
-    const totalPaymentAmount = Number(creditAmount) + Number(totalTaxAmount)
-
-    const creditPeriodPayment = (totalPaymentAmount / creditPeriod).toFixed(2)
-    const principalAmount = (
-      creditPeriodPayment - totalTaxPeriodAmount
-    ).toFixed(2)
+    const totalPaymentAmount = creditAmount + totalTaxAmount
+    const creditRateAmount = totalRateAmount / creditPeriod
+    const creditBsmvAmount = totalCreditBsmvAmount / creditPeriod
+    const creditKkdfAmount = totalCreditKkdfAmount / creditPeriod
+    const creditPeriodPayment = totalPaymentAmount / creditPeriod
+    const principalAmount = creditPeriodPayment - totalTaxPeriodAmount
+    var remaningPrincipalAmount = totalPaymentAmount - creditPeriodPayment
 
     set({
-      creditRate,
-      totalRateAmount,
-      totalBsmvAndKkdfAmount,
-      totalTaxAmount,
-      totalPaymentAmount,
-      creditPeriodPayment,
+      creditAmount: creditAmount.toFixed(2),
+      creditRate: creditRate.toFixed(2),
+      totalRateAmount: totalRateAmount.toFixed(2),
+      totalBsmvAndKkdfAmount: totalBsmvAndKkdfAmount.toFixed(2),
+      totalTaxAmount: totalTaxAmount.toFixed(2),
+      totalPaymentAmount: totalPaymentAmount.toFixed(2),
+      creditPeriodPayment: creditPeriodPayment.toFixed(2),
     })
-
-    var remaningPrincipalAmount = (
-      totalPaymentAmount - creditPeriodPayment
-    ).toFixed(2)
 
     for (let i = 0; i < creditPeriod; i++) {
       tableData.push({
-        creditPeriodPayment,
-        principalAmount,
-        creditRateAmount,
-        creditBsmvAmount,
-        creditKkdfAmount,
-        remaningPrincipalAmount,
+        period: i + 1,
+        creditPeriodPayment: creditPeriodPayment.toFixed(2),
+        principalAmount: principalAmount.toFixed(2),
+        creditRateAmount: creditRateAmount.toFixed(2),
+        creditBsmvAmount: creditBsmvAmount.toFixed(2),
+        creditKkdfAmount: creditKkdfAmount.toFixed(2),
+        remaningPrincipalAmount: remaningPrincipalAmount.toFixed(2),
       })
-      remaningPrincipalAmount = (
-        remaningPrincipalAmount - creditPeriodPayment
-      ).toFixed(2)
+      remaningPrincipalAmount = remaningPrincipalAmount - creditPeriodPayment
     }
 
     set({ tableData })
   },
-  calculateCompoundCreditPayback: (
-    creditAmount,
-    creditRate,
-    creditPeriod,
-    creditBsmv,
-    creditKkdf
-  ) => {
+  calculateCompoundCreditPayback: (args) => {
+    const { creditAmount, creditRate, creditPeriod, creditBsmv, creditKkdf } =
+      Object.keys(args).reduce((prev, key) => {
+        const value = args[key]
+        return {
+          ...prev,
+          [key]: typeof value !== "object" ? Number(value) : value,
+        }
+      }, {})
+
     const totalTaxRate =
       (creditRate / 100) * (1 + (creditBsmv / 100 + creditKkdf / 100))
-    const creditPeriodPayment = (
+    const creditPeriodPayment =
       creditAmount *
       ((totalTaxRate * (1 + totalTaxRate) ** creditPeriod) /
         ((1 + totalTaxRate) ** creditPeriod - 1))
-    ).toFixed(2)
 
-    const totalPaymentAmount = (creditPeriodPayment * creditPeriod).toFixed(2)
-    const totalTaxAmount = (totalPaymentAmount - creditAmount).toFixed(2)
+    const totalPaymentAmount = creditPeriodPayment * creditPeriod
+    const totalTaxAmount = totalPaymentAmount - creditAmount
 
     var totalRateAmount = 0
     var totalBsmvAndKkdfAmount = 0
+    var period = 0
 
     set({
       tableData: null,
-      creditAmount,
-      creditRate,
+      creditAmount: creditAmount.toFixed(2),
+      creditRate: creditRate.toFixed(2),
       creditPeriod,
-      creditPeriodPayment,
-      totalTaxAmount,
-      totalPaymentAmount,
-      totalRateAmount,
-      totalBsmvAndKkdfAmount,
+      creditPeriodPayment: creditPeriodPayment.toFixed(2),
+      totalTaxAmount: totalTaxAmount.toFixed(2),
+      totalPaymentAmount: totalPaymentAmount.toFixed(2),
+      totalRateAmount: totalRateAmount.toFixed(2),
+      totalBsmvAndKkdfAmount: totalBsmvAndKkdfAmount.toFixed(2),
     })
 
     return get().compundComplexInterestFormula(
@@ -126,7 +128,8 @@ const creditMethods = (set, get) => ({
       creditKkdf,
       creditPeriodPayment,
       totalRateAmount,
-      totalBsmvAndKkdfAmount
+      totalBsmvAndKkdfAmount,
+      period
     )
   },
   compundComplexInterestFormula: (
@@ -138,6 +141,7 @@ const creditMethods = (set, get) => ({
     creditPeriodPayment,
     totalRateAmount,
     totalBsmvAndKkdfAmount,
+    period,
     tableData = []
   ) => {
     var creditRateAmount = (creditRate / 100) * creditAmount
@@ -147,25 +151,20 @@ const creditMethods = (set, get) => ({
       creditPeriodPayment -
       (creditRateAmount + creditBsmvAmount + creditKkdfAmount)
     var remaningPrincipalAmount = creditAmount - principalAmount
-
-    principalAmount = principalAmount.toFixed(2)
-    creditRateAmount = creditRateAmount.toFixed(2)
-    creditBsmvAmount = creditBsmvAmount.toFixed(2)
-    creditKkdfAmount = creditKkdfAmount.toFixed(2)
-    remaningPrincipalAmount = remaningPrincipalAmount.toFixed(2)
-
     totalRateAmount += parseFloat(creditRateAmount)
     totalBsmvAndKkdfAmount +=
       parseFloat(creditBsmvAmount) + parseFloat(creditKkdfAmount)
 
+    period += 1
     tableData.push({
-      creditPeriodPayment,
-      principalAmount,
-      creditRateAmount,
+      period,
+      creditPeriodPayment: creditPeriodPayment.toFixed(2),
+      principalAmount: principalAmount.toFixed(2),
+      creditRateAmount: creditRateAmount.toFixed(2),
       creditPeriod,
-      creditKkdfAmount,
-      creditBsmvAmount,
-      remaningPrincipalAmount,
+      creditKkdfAmount: creditKkdfAmount.toFixed(2),
+      creditBsmvAmount: creditBsmvAmount.toFixed(2),
+      remaningPrincipalAmount: remaningPrincipalAmount.toFixed(2),
     })
 
     if (remaningPrincipalAmount > 0 && tableData.length < creditPeriod) {
@@ -178,17 +177,22 @@ const creditMethods = (set, get) => ({
         creditPeriodPayment,
         totalRateAmount,
         totalBsmvAndKkdfAmount,
+        period,
         tableData
       )
     } else {
       set({ tableData })
-      set({ totalRateAmount, totalBsmvAndKkdfAmount })
+      set({
+        totalRateAmount: totalRateAmount.toFixed(2),
+        totalBsmvAndKkdfAmount: totalBsmvAndKkdfAmount.toFixed(2),
+      })
       return
     }
   },
 })
 
 export const dataStore = create((set, get) => ({
+  ...initialData,
   ...initialCreditData,
   ...calculatedData,
   ...creditMethods(set, get),
