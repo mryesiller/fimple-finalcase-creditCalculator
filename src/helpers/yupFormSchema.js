@@ -53,7 +53,7 @@ export const formSchema = yup.object().shape({
         .number()
         .required()
         .min(0.01, <Trans>min-rate-error-month</Trans>) // 0.01% min/month
-        .max(10, <Trans>max-rate-error-month</Trans>), // 10% max/month
+        .max(15, <Trans>max-rate-error-month</Trans>), // 15% max/month
     }),
   creditPeriod: yup
     .number()
