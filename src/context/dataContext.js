@@ -170,8 +170,9 @@ const creditMethods = (set, get) => ({
     totalBsmvAndKkdfAmount +=
       parseFloat(creditBsmvAmount) + parseFloat(creditKkdfAmount)
 
+    period += 1
     tableData.push({
-      period: period + 1,
+      period,
       creditPeriod,
       ...convertToFixed(
         {
