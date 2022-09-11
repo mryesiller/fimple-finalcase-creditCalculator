@@ -94,6 +94,7 @@ Project Details
 - Errors are shown to the user in the part where he/she made an error.
 - In case of clicking on a different address, a 404 not found page is shown to the user.
 - The user can change the colors of the tabs by clicking on the desired tab in the section where the credit information is displayed.
+- Users can change the background colors of the information by clicking on the info section.
 
 <br>
 <h3 align="left">Restricts</h3>
