@@ -23,6 +23,7 @@
     "week":"hafta",
     "month":"ay",
     "year":"yıl",
+    "empty-value-error" : "Değer boş bırakılamaz", 
     "min-amount-error-year":"Kredi miktarı yıllık periyod için 10.000 TL'den az olamaz",
     "max-amount-error-year":"Kredi miktarı yıllık periyod için 10.000.000 TL'den fazla olamaz",
     "min-amount-error-month":"Kredi miktarı aylık periyod için 1.000 TL'den az olamaz",

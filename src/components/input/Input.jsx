@@ -15,6 +15,7 @@ const Input = (
         step={step}
         defaultValue={defaultValue}
         onChange={onChange}
+        minLength="1"
       />
       <label className={`input__label`} htmlFor={name}>
         {label}

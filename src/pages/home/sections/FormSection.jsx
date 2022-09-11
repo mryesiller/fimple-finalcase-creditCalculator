@@ -101,6 +101,7 @@ const FormSection = () => {
         err.inner.forEach((error) => {
           validationErrors[error.path] = error.message
         })
+        console.log(validationErrors)
         eventStore.setState({ errors: validationErrors })
         eventStore.setState({ isLoading: false })
       })
