@@ -1,9 +1,6 @@
 import React, { forwardRef } from "react"
 
-import {
-  sanitizeCurrencyValue,
-  formatCurrency,
-} from "../../../helpers/currency"
+import { sanitizeCurrencyValue, formatCurrency } from "../../helpers/currency"
 
 const CurrencyInput = (
   { name, info, type, label, onChange, error, step, defaultValue, ...props },

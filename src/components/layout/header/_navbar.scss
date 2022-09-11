@@ -38,6 +38,10 @@
             font-size: var(--small-font-size);
         }
 
+        &__language {
+            margin-top:0.3rem;
+        }
+
         &__button {
             display:flex;
             flex-direction: column;

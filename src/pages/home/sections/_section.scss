@@ -123,7 +123,6 @@
     &__button {
       padding: 2rem 1rem;
     }
-
    
   }
 
@@ -131,7 +130,8 @@
     
     justify-content: center;
     align-items: center;
-    padding:1rem 0;
+    padding:1.5rem 0;
+    margin-top: 1rem;
 
     &__container {
       grid-template-columns: 1fr;
@@ -143,9 +143,7 @@
 
     &__button {
       padding: 2.5rem 1rem;
-    }
-
-   
+    }   
   }  
 }
 
@@ -196,14 +194,11 @@
 
     &__text {
       font-size:var(--small-font-size);
-    }
-      
+    }      
   }
 
-  @media screen and (max-width: 620px) {
-    
-    grid-template-columns:1fr ;    
-    
+  @media screen and (max-width: 620px) {    
+    grid-template-columns:1fr ;        
   }
 
 }
@@ -221,7 +216,7 @@
   @include border;
   border-top: 0;
   margin-top: 2rem;  
-  height:600px;
+  height:600px;  
   overflow: hidden;
   position: relative;
 
@@ -244,13 +239,11 @@
     }     
 
     tr:nth-child(even) {
-      background-color: var(--table-color);
-      
+      background-color: var(--table-color);      
     }
 
     @media screen and (max-width: 780px) {
-      width: 100%;    
-      
+      width: 100%;          
     }
   }
   
@@ -265,29 +258,7 @@
     border-collapse: collapse;
     
   }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin-top: -2.5rem;    
-    padding: 0  1.5rem;
-
-    @media screen and (max-width: 300) {
-      padding: 0  1.25rem;     
-      margin-top: 1rem; 
-      
-    }
-    
-    h1 {
-      text-align: center;      
-    }
-    
-  }
+ 
 
   &__info--buttons {
     grid-template-columns: 1fr 1fr;
@@ -304,11 +275,8 @@
       background-color: var(--body-color);
       
 
-      @media screen and (max-width: 620px) {
-        
-        font-size: 0.9rem;
-
-              
+      @media screen and (max-width: 620px) {        
+        font-size: 0.9rem;              
       }
     }
   }
@@ -316,10 +284,10 @@
   &__button {
     position: absolute;
     bottom: 0;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    background-color: var(--text-color);
-    color:var(--body-color);
+    letter-spacing: 0.25rem;
+    font-weight: 500;
+    background-color: rgb(58, 155, 83);
+    color:white;
     width: 100%;
     padding: 0.5rem;
   }   
@@ -329,8 +297,7 @@
     thead,th,td {
       
       font-size: var(--small-font-size);
-    }
-    
+    }    
   }
 
   @media screen and (max-width: 620px) {
@@ -340,8 +307,7 @@
       padding: 0.3rem 0.5rem;
       font-size: 0.6rem;
       font-weight: bold;
-    }
-    
+    }    
   }
 }
 
@@ -349,38 +315,51 @@
 
 // Credit Info scss files
 .info__credit {
+
+  padding: 4rem;
+  margin-top: 3rem;
+
+  & > h2 {
+    text-align: center;
+  }
    
   ul {
     margin-top: 2rem;
     list-style-type: none;
     
-    li {
+    li {            
       line-height: 2rem;
-      font-size: 1.25rem;
+      font-size: 1.15rem;      
       color:var(--text-color);
 
     }
 
     li:before {
-      content: "*";
-      color: var(--text-color);
-      font-weight: bold;
+      content:'';
       display: inline-block;
-      align-items: center;       
-      padding:0 1rem;
-    }
-    
+      background: var(--li-picture);
+      background-size: cover;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;      
+    }    
+  }
+
+  @media screen and (max-width: 980px) {    
+    padding: 2rem;
+    font-size: var(--normal-font-size);
+    line-height: 1.5rem;     
   }
 
   @media screen and (max-width: 620px) {
+    
     ul {
       margin-top: 1rem;
       li {
         font-size: 0.9rem;
+        line-height: 1.5rem;
       }
-    }
-  
-    
+    }    
   }
 }
 

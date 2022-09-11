@@ -73,10 +73,7 @@ const Table = () => {
           </table>
         </div>
       ) : (
-        <div className="table__info">
-          <h1>{t("info-title")}</h1>
-          <InfoCredit />
-        </div>
+        <InfoCredit />
       )}
 
       <button

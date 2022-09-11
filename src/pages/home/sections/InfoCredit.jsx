@@ -7,6 +7,7 @@ const InfoCredit = () => {
 
   return (
     <article className="info__credit">
+      <h2>{t("info-title")}</h2>
       <ul>
         <li>{t("info-1")}</li>
         <li>{t("info-2")}</li>

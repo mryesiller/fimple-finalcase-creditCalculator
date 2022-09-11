@@ -17,25 +17,25 @@
 
 <ul>
     <li>
-        <a href="https://github.com/pmndrs/zustand" target="blank" title="zustand" ><h3>📀 zustand --> Context Library </h3></a>
+        <a href="https://github.com/pmndrs/zustand" target="blank" title="zustand" >📀 zustand --> Context Library </a>
     </li>
      <li>
-        <a href="https://www.npmjs.com/package/yup" target="blank" title="zustand" ><h3>📀 yup --> Validate Library</h3></a>
+        <a href="https://www.npmjs.com/package/yup" target="blank" title="zustand" >📀 yup --> Validate Library</a>
     </li>
      <li>
-        <a href="https://reactrouter.com/en/main" target="blank" title="zustand" ><h3>📀 react-router-dom --> Routes  </h3></a>
+        <a href="https://reactrouter.com/en/main" target="blank" title="zustand" >📀 react-router-dom --> Routes  </</a>
     </li>
      <li>
-        <a href="https://github.com/sass/node-sass" target="blank" title="zustand" ><h3>📀 node-sass --> scss reprocessor</h3></a>
+        <a href="https://github.com/sass/node-sass" target="blank" title="zustand" >📀 node-sass --> scss reprocessor</a>
     </li>
      <li>
-        <a href="https://react.i18next.com/" target="blank" title="zustand" ><h3>📀 i18next / react-i18next --> Language management</h3></a>
+        <a href="https://react.i18next.com/" target="blank" title="zustand" >📀 i18next / react-i18next --> Language management</a>
     </li>
      <li>
-        <a href="https://gdowens.github.io/react-toggle-button/" target="blank" title="zustand" ><h3>📀 react-toggle-button --> Toggle button for form</h3></a>
+        <a href="https://gdowens.github.io/react-toggle-button/" target="blank" title="zustand" >📀 react-toggle-button --> Toggle button for form</a>
     </li>
      <li>
-        <a href="https://www.davidhu.io/react-spinners/" target="blank" title="zustand" ><h3>📀 react-spinners --> Spinner for loading state</h3></a>
+        <a href="https://www.davidhu.io/react-spinners/" target="blank" title="zustand" >📀 react-spinners --> Spinner for loading state</a>
     </li>
 <ul/>
 
