@@ -17,19 +17,19 @@
 
 <ul>
     <li>
-        <a href="https://github.com/pmndrs/zustand" target="blank" title="zustand" >📀 zustand --> Context Library </a>
+        <a href="https://github.com/pmndrs/zustand" target="blank" title="zustand" >📀 zustand --> State Management </a>
     </li>
      <li>
-        <a href="https://www.npmjs.com/package/yup" target="blank" title="zustand" >📀 yup --> Validate Library</a>
+        <a href="https://www.npmjs.com/package/yup" target="blank" title="zustand" >📀 yup --> Validate Management</a>
     </li>
      <li>
-        <a href="https://reactrouter.com/en/main" target="blank" title="zustand" >📀 react-router-dom --> Routes  </</a>
+        <a href="https://reactrouter.com/en/main" target="blank" title="zustand" >📀 react-router-dom --> Routes Management  </</a>
     </li>
      <li>
         <a href="https://github.com/sass/node-sass" target="blank" title="zustand" >📀 node-sass --> scss reprocessor</a>
     </li>
      <li>
-        <a href="https://react.i18next.com/" target="blank" title="zustand" >📀 i18next / react-i18next --> Language management</a>
+        <a href="https://react.i18next.com/" target="blank" title="zustand" >📀 i18next / react-i18next --> Language Management</a>
     </li>
      <li>
         <a href="https://gdowens.github.io/react-toggle-button/" target="blank" title="zustand" >📀 react-toggle-button --> Toggle button for form</a>
