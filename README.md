@@ -2,6 +2,12 @@
 <hr>
 <br>
 
+<div align="center">
+    <a href="https://fimple-react-practicum.netlify.app/" target="blank" title="Fimple" >PROJECT WEBSITE</a>
+</div>
+ 
+<br>
+<br>
 <h2 align="center">🧱 ABOUT PROJECT 🧱</h2>
 <hr>
 <br>
